@@ -379,7 +379,6 @@ var PushNotification = function () {
 
 module.exports = {
   //apple register
-  register,
   /**
    * Register for Push Notifications.
    *
