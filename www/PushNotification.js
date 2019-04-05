@@ -100,7 +100,7 @@ var PushNotification = function () {
       exec(function (result) {
         _this.emit('notification', result);
 
-      }, errorCallback, "PushPlugin", "register", [options]);
+      }, console.error, "PushPlugin", "register", [options]);
     } else { //android
       setTimeout(function () {
         exec(success, fail, 'PushNotification', 'init', [options]);
