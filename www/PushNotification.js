@@ -37,25 +37,7 @@ var PushNotification = function () {
       notification: [],
       error: []
     };
-    //apple
-    this.register = function (successCallback, errorCallback, options) {
-              if (errorCallback == null) {
-                errorCallback = function () {
-                }
-              }
 
-              if (typeof errorCallback != "function") {
-                console.log("PushNotification.register failure: failure parameter not a function");
-                return
-              }
-
-              if (typeof successCallback != "function") {
-                console.log("PushNotification.register failure: success callback parameter must be a function");
-                return
-              }
-
-              exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
-            };
 
     // require options parameter
     if (typeof options === 'undefined') {
@@ -343,11 +325,34 @@ var PushNotification = function () {
   return PushNotification;
 }();
 
+
+let register = function (successCallback, errorCallback, options) {
+  if (errorCallback == null) {
+    errorCallback = function () {
+    }
+  }
+
+  if (typeof errorCallback != "function") {
+    console.log("PushNotification.register failure: failure parameter not a function");
+    return
+  }
+
+  if (typeof successCallback != "function") {
+    console.log("PushNotification.register failure: success callback parameter must be a function");
+    return
+  }
+
+  exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
+};
+
+
 /*!
  * Push Notification Plugin.
  */
 
 module.exports = {
+  //apple register
+  register,
   /**
    * Register for Push Notifications.
    *
@@ -357,6 +362,7 @@ module.exports = {
    * @param {Object} options
    * @return {PushNotification} instance
    */
+
 
   init: function init(options) {
     return new PushNotification(options);
