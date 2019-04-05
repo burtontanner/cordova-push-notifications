@@ -98,7 +98,7 @@ var PushNotification = function () {
       }
       options.ecb = "ApplePushNotification";
       exec(function (result) {
-        _this.emit('registration', {registrationId:result, registrationType:'APN');
+        _this.emit('registration', {registrationId:result, registrationType:'APN'});
 
       }, console.error, "PushPlugin", "register", [options]);
     } else { //android
