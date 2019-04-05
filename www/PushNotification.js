@@ -92,7 +92,7 @@ var PushNotification = function () {
     };
 
     // wait at least one process tick to allow event subscriptions
-    if (window.platformId === 'ios') {
+    if (window.cordova.platformId === 'ios') {
       window.ApplePushNotification = function (result) {
         _this.emit('notification', result);
       }
